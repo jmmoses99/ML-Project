@@ -1,0 +1,13 @@
+import itertools
+from collections import Counter
+bases = ['A', 'C', 'G', 'T']
+k = 2
+all_kmers = [''.join(p) for p in itertools.product(bases, repeat=k)]
+# Create a dummy bg object for testing
+class Mock: pass
+bg = Mock()
+bg.defines = {('A', 1): 1}
+# This is the line where you see the error
+counts = Counter(key[0] for key in bg.defines.keys())
+print("It works!")
+
